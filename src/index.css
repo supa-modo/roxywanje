@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --pink-1: #fff5f8;
+  --pink-2: #ffe7ef;
+  --pink-3: #ff6ba1;
+  --pink-4: #e94d8b;
+  --soft-shadow: 0 20px 60px rgb(233 77 139 / 20%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  color: #2a2a2a;
+  background: linear-gradient(140deg, var(--pink-1) 0%, #fff0f5 50%, var(--pink-2) 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.valentine-page {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.hearts-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.float-heart {
+  position: absolute;
+  bottom: -12vh;
+  opacity: 0;
+  filter: drop-shadow(0 5px 10px rgb(233 77 139 / 20%));
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.card,
+.question-wrap {
+  position: relative;
+  z-index: 10;
+  width: min(100%, 760px);
+  text-align: center;
+}
+
+.card {
+  border: 1px solid rgb(255 255 255 / 85%);
+  background: rgb(255 255 255 / 78%);
+  backdrop-filter: blur(8px);
+  border-radius: 1.8rem;
+  box-shadow: var(--soft-shadow);
+  padding: 2rem 1.7rem;
+}
+
+.intro-text {
+  margin: 0;
+  color: var(--pink-4);
+  font-size: clamp(1.8rem, 4.8vw, 3rem);
+  font-weight: 600;
+}
+
+.intro-sub {
+  margin: 0.9rem 0 1.6rem;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: rgb(51 51 51 / 75%);
+}
+
+.script-title {
+  margin: 0;
+  color: var(--pink-4);
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 9vw, 5.8rem);
+  line-height: 1;
+  font-weight: 400;
+}
+
+.hero-heart {
+  margin-bottom: 0.7rem;
+  font-size: clamp(3.2rem, 9vw, 5.5rem);
+  animation: heartbeat 1.2s infinite;
+}
+
+.question-sub {
+  margin: 0.8rem 0 2rem;
+  color: rgb(41 41 41 / 74%);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.action-row {
+  display: flex;
+  min-height: 84px;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.primary-btn,
+.yes-btn,
+.no-btn,
+.ghost-btn {
+  border: 0;
+  border-radius: 999px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.primary-btn {
+  background: var(--pink-3);
+  color: #fff;
+  padding: 0.85rem 1.6rem;
+  box-shadow: 0 10px 24px rgb(233 77 139 / 28%);
+}
+
+.primary-btn:hover {
+  background: var(--pink-4);
+  transform: translateY(-1px);
+}
+
+.yes-btn {
+  background: #27a96d;
+  color: #fff;
+  padding: 0.95rem 2.2rem;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 20px rgb(39 169 109 / 30%);
+}
+
+.yes-btn:hover {
+  background: #1e945f;
+}
+
+.no-btn {
+  background: #8f8f8f;
+  color: #fff;
+  padding: 0.95rem 2.2rem;
+  font-size: 1.2rem;
+}
+
+.success-card {
+  width: min(100%, 700px);
+}
+
+.success-video-card {
+  position: relative;
+  overflow: hidden;
+  border-color: rgb(255 255 255 / 70%);
+  background: rgb(20 14 19 / 28%);
+  padding: 0;
+}
+
+.success-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.success-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(33 12 24 / 34%) 0%,
+    rgb(20 11 16 / 58%) 55%,
+    rgb(18 9 14 / 74%) 100%
+  );
+}
+
+.success-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.5rem;
+}
+
+.success-emoji {
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  margin-bottom: 0.6rem;
+}
+
+.success-copy {
+  margin: 1rem auto 0;
+  max-width: 560px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgb(43 43 43 / 82%);
+}
+
+.ghost-btn {
+  margin-top: 1.5rem;
+  background: rgb(255 255 255 / 55%);
+  border: 1px solid rgb(233 77 139 / 35%);
+  color: var(--pink-4);
+  padding: 0.75rem 1.25rem;
+}
+
+.ghost-btn:hover {
+  background: #fff;
+}
+
+.success-content .script-title {
+  color: #fff;
+  text-shadow: 0 8px 20px rgb(0 0 0 / 30%);
+}
+
+.success-content .success-copy {
+  color: rgb(255 255 255 / 92%);
+  text-shadow: 0 5px 18px rgb(0 0 0 / 28%);
+}
+
+.success-content .ghost-btn {
+  background: rgb(255 255 255 / 78%);
+}
+
+.party-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.party-popper {
+  position: absolute;
+  top: 1rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  animation: popperPulse 950ms ease-in-out infinite;
+}
+
+.party-popper.left {
+  left: max(0.75rem, 4vw);
+}
+
+.party-popper.right {
+  right: max(0.75rem, 4vw);
+  animation-delay: 220ms;
+}
+
+.party-piece {
+  --drift: 0px;
+  position: absolute;
+  top: -8vh;
+  width: 0.5rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  opacity: 0;
+  animation-name: partyFall;
+  animation-timing-function: cubic-bezier(0.18, 0.78, 0.28, 1);
+  animation-iteration-count: infinite;
+}
+
+.fade-in {
+  animation: fadeIn 500ms ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 300ms ease forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(260deg);
+    opacity: 0;
+  }
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.12);
+  }
+  65% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes popperPulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+}
+
+@keyframes partyFall {
+  0% {
+    transform: translate3d(0, -4vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(520deg);
+    opacity: 0;
+  }
+}
