@@ -3,8 +3,22 @@ import { useEffect, useMemo, useRef, useState } from "react";
 const INTRO_MESSAGES = [
   "Hi RockSan...",
   "Nikuambie kitu?",
-  "Of late nimekuwa nikismile sana, sijui mbona",
+  "Of late nimekuwa nikismile sana ju yako",
   "So wacha nikuulize kitu kidogo...",
+];
+
+const INTRO_SUBHEADINGS = [
+  "Muhele msichana wa Musoli.",
+  "Teren Teren .....",
+  "Na usianze kujiskia, nitakukimbiza👺.",
+  "Na hii ndio important part yangu leo.",
+];
+
+const INTRO_BUTTON_LABELS = [
+  "Click Me",
+  "Tuendelee",
+  "Almost There",
+  "Nifinye 🫦",
 ];
 
 function App() {
@@ -15,6 +29,7 @@ function App() {
   const [noPosition, setNoPosition] = useState(null);
   const noBtnRef = useRef(null);
   const successVideoRef = useRef(null);
+  const preloadVideoRef = useRef(null);
 
   const floatingHearts = useMemo(
     () =>
@@ -85,6 +100,22 @@ function App() {
   };
 
   useEffect(() => {
+    if (!preloadVideoRef.current) return;
+
+    const preloadVideo = preloadVideoRef.current;
+    preloadVideo.preload = "auto";
+    preloadVideo.load();
+
+    preloadVideo
+      .play()
+      .then(() => {
+        preloadVideo.pause();
+        preloadVideo.currentTime = 0;
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
     if (stage !== "success" || !successVideoRef.current) return;
 
     const video = successVideoRef.current;
@@ -96,6 +127,16 @@ function App() {
 
   return (
     <div className="valentine-page">
+      <video
+        ref={preloadVideoRef}
+        className="video-preload"
+        src="/roxy.mp4"
+        preload="auto"
+        muted
+        playsInline
+        aria-hidden="true"
+      />
+
       <div className="hearts-layer" aria-hidden="true">
         {floatingHearts.map((heart) => (
           <span
@@ -118,9 +159,11 @@ function App() {
           <h1 className={`intro-text ${textFade ? "fade-out" : "fade-in"}`}>
             {INTRO_MESSAGES[introStep]}
           </h1>
-          <p className="intro-sub">I have something beautiful to ask you.</p>
+          <p className={`intro-sub ${textFade ? "fade-out" : "fade-in"}`}>
+            {INTRO_SUBHEADINGS[introStep]}
+          </p>
           <button type="button" className="primary-btn" onClick={nextIntroStep}>
-            Click Me
+            {INTRO_BUTTON_LABELS[introStep]}
           </button>
         </section>
       )}

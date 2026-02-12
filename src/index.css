@@ -35,6 +35,14 @@ body {
   padding: 1.5rem;
 }
 
+.video-preload {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hearts-layer {
   position: absolute;
   inset: 0;
