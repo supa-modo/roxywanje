@@ -118,7 +118,6 @@ function App() {
           <h1 className={`intro-text ${textFade ? "fade-out" : "fade-in"}`}>
             {INTRO_MESSAGES[introStep]}
           </h1>
-          //show
           <p className="intro-sub">I have something beautiful to ask you.</p>
           <button type="button" className="primary-btn" onClick={nextIntroStep}>
             Click Me
